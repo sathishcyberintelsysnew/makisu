@@ -8,4 +8,4 @@ mkdocs==1.0.4
 PyYAML==5.1.2
 singledispatch==3.4.0.3
 six==1.12.0
-tornado==5.1.1
+tornado==6.3.2
