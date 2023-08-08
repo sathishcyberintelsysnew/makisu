@@ -11,7 +11,7 @@ FROM busybox
 COPY --from=debian:8 /bin/bash /bash
 RUN ls -la /bash
 
-FROM alpine as phaseA
+FROM alpine:3.18.3 as phaseA
 # Setup copy source.
 RUN mkdir /src
 RUN touch /src/a.txt
@@ -20,7 +20,7 @@ RUN mkdir /src/c && chown news:news /src/c
 RUN touch /src/c/1.txt && chown news:news /src/c/1.txt && chmod 770 /src/c/1.txt
 RUN touch /src/c/2.txt
 
-FROM alpine
+FROM alpine:3.18.3
 RUN mkdir /src
 RUN touch /src/a.txt
 RUN touch /src/b.txt #!COMMIT
@@ -29,7 +29,7 @@ COPY --from=phaseA /src/c/ /src/c/
 RUN cat /src/c/1.txt && cat /src/c/2.txt
 RUN rm -rf /src/c/ #!COMMIT
 
-FROM alpine AS phaseB
+FROM alpine:3.18.3 AS phaseB
 RUN mkdir /dst
 # Copy to existing dir with changed permission.
 RUN mkdir /dst/a && chown mail:mail /dst/a && chmod 777 /dst/a
@@ -46,7 +46,7 @@ COPY --from=phaseA --archive /src/c/ /dst/dst/b
 COPY --from=phaseA --chown=ftp:ftp /src/c/ /dst/dst/c
 COPY --chown=ftp:ftp 1/ /dst/dst/d
 
-FROM alpine
+FROM alpine:3.18.3
 RUN mkdir /mine
 # Copy root.
 COPY --from=phaseB / /
