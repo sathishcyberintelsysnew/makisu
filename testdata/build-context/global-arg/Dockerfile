@@ -1,10 +1,10 @@
 ARG version_default=v1
 
-FROM alpine:latest as base1
+FROM alpine:3.18.3 as base1
 ARG version_default
 ENV version=$version_default
 
-FROM alpine:latest as base2
+FROM alpine:3.18.3 as base2
 ARG version_default
 ENV version2=$version_default
 
