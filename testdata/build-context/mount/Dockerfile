@@ -1,15 +1,15 @@
-FROM alpine:latest AS phase1
+FROM alpine:3.18.3 AS phase1
 ENV A=1
 RUN cp /tmp/test.txt /done.txt #!COMMIT
 
 
-FROM alpine:latest AS phase2
+FROM alpine:3.18.3 AS phase2
 ENV A=1
 RUN cp /tmp/test.txt /done.txt #!COMMIT
 RUN rm /done.txt
 
 
-FROM alpine:latest AS phase3
+FROM alpine:3.18.3 AS phase3
 
 # Generate a few empty layers.
 RUN mkdir /test #!COMMIT
