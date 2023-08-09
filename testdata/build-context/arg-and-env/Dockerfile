@@ -1,5 +1,5 @@
 ARG BASE_IMAGE="busybox:latest"
-ARG RUNTIME_BASE_IMAGE="alpine"
+ARG RUNTIME_BASE_IMAGE=alpine:3.18.3
 
 # construct build image
 FROM ${BASE_IMAGE} as builder
