@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.19.1
 RUN mkdir /testdata && chmod a+rw /testdata
 RUN whoami > /testdata/root_file
 
